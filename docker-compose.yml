@@ -20,8 +20,6 @@ services:
    - ./:/usr/share/nginx/html/restfullapi/
    ports:
    - "9000:9000"
-  #  expose:
-  #  - "9000"
    links:
     - db:db
 
@@ -37,7 +35,7 @@ services:
     MYSQL_USER: testrestfullapi
     MYSQL_PASSWORD: testrestfullapi
    ports:
-   - "3366:3306"
+   - "3306:3306"
 
   pma:
    image: phpmyadmin/phpmyadmin
