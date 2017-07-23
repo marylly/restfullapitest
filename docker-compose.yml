@@ -1,0 +1,53 @@
+version: "2"
+
+services:
+  web:
+   image: nginx:latest
+   mem_limit: 96m
+   ports:
+   - "8064:80"
+   volumes:
+   - ./:/usr/share/nginx/html/restfullapi/
+   - ./config/default.conf:/etc/nginx/conf.d/site.conf
+   - ./infra/nginx/logs:/var/log/nginx/
+
+  php:
+   build:
+      context: .
+   mem_limit: 96m
+   volumes:
+   - ./:/usr/share/nginx/html/restfullapi/
+   expose:
+   - "9000"
+   links:
+    - db:db
+
+  db:
+   image: mariadb:latest
+   mem_limit: 96m
+   volumes:
+    - ./infra/mariadb:/var/lib/mysql
+    - ./config/data/api.sql:/docker-entrypoint-initdb.d/base.sql
+   environment:
+    MYSQL_RANDOM_ROOT_PASSWORD: 1
+    MYSQL_DATABASE: api
+    MYSQL_USER: testrestfullapi
+    MYSQL_PASSWORD: testrestfullapi
+   ports:
+   - "3366:3306"
+
+  pma:
+   image: phpmyadmin/phpmyadmin
+   mem_limit: 96m
+   environment:
+    PMA_ARBITRARY: 1
+    PMA_HOST: db
+    PMA_USER: testrestfullapi
+    PMA_PASSWORD: testrestfullapi
+    PHP_UPLOAD_MAX_FILESIZE: 1G
+    PHP_MAX_INPUT_VARS: 1G
+   restart: always
+   ports:
+   - "8001:80"
+   volumes:
+   - ./infra/pma/sessions:/sessions
