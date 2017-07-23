@@ -18,7 +18,8 @@
         "monolog/monolog": "^1.17"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=4.8 < 6.0"
+        "phpunit/phpunit": ">=4.8 < 6.0",
+        "phpunit/php-code-coverage": "2.*"
     },
     "autoload-dev": {
          "psr-4": {
@@ -30,8 +31,8 @@
         }
     },
 	"scripts": {
-        "start": "php -S 0.0.0.0:8080 -t public public/index.php",
-        "test": "phpunit"
+        "start": "php -S 0.0.0.0:8081 -t public public/index.php",
+        "test": "phpunit --verbose --coverage-html ./report"
 	}
 
 }
