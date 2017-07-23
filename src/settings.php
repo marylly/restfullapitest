@@ -21,5 +21,6 @@ return [
             'user' => 'testrestfullapi',
             'pass' => 'testrestfullapi'
         ],
+        'debug' => true
     ],
 ];

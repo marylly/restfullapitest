@@ -32,7 +32,8 @@
     },
 	"scripts": {
         "start": "php -S 0.0.0.0:8081 -t public public/index.php",
-        "test": "phpunit --verbose --coverage-html ./report"
+        "container-test": "phpunit --verbose --coverage-html ./report",
+        "test": "docker exec -ti fpm bash -ic 'cd /usr/share/nginx/html/restfullapi; composer container-test; exit $?'"
 	}
 
 }

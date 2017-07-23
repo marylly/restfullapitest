@@ -2,6 +2,7 @@
 
 namespace Tests\Functional;
 
+use App\Controllers as Controllers;
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -70,7 +71,6 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
 
         // Process the application
         $response = $app->process($request, $response);
-
         // Return the response
         return $response;
     }
