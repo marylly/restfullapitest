@@ -7,9 +7,13 @@ $app->get('/users', function ($request, $response, $args) {
     return $this->response->withJson($todos);
 });
 $app->post('/user/new', function ($request, $response, $args) {
-    $ticket_id = "teste";
-    $response->getBody()->write($ticket_id );
-    return $response;
+    $content = $request->getParsedBody();
+    $user = new Controllers\User($this);
+    if($user->addNew($content)) {
+        return $response->getBody()->write($request->getBody());
+    } else {
+        return false;
+    }
 });
 
 $app->get('/user/{id}', function ($request, $response, $args) {
