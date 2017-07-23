@@ -38,23 +38,6 @@ class User {
     }
 
     /*
-     * Add new User
-     */
-    public function addNew($json) {
-        $insert_obj = (object) $json;
-        $fields = $this->getTableFields($this->table);
-        if(($key = array_search("id", $fields)) !== false) unset($fields[$key]);
-        $query = "INSERT INTO " . $this->table . " ( " . implode($fields, ', ') . ") VALUES (" . implode(array_map(function($value) { return ':' . $value; }, $fields),', ') . ");";
-
-        $stmt = $this->db->prepare($query);
-
-        foreach($fields as $field) {
-            $stmt->bindParam(':' . $field, $insert_obj->$field, \PDO::PARAM_STR);
-        }
-        return $stmt->execute();
-    }
-
-    /*
      * Select a User
      */
     public function getUser($idOrEmail) {
@@ -68,6 +51,23 @@ class User {
     }
 
     /*
+     * Add new User
+     */
+    public function addNew($content) {
+        $insert_obj = (object) $content;
+        $fields = $this->getTableFields($this->table);
+        if(($key = array_search("id", $fields)) !== false) unset($fields[$key]);
+        $query = "INSERT INTO " . $this->table . " ( " . implode($fields, ', ') . ") VALUES (" . implode(array_map(function($value) { return ':' . $value; }, $fields),', ') . ");";
+
+        $stmt = $this->db->prepare($query);
+
+        foreach($fields as $field) {
+            $stmt->bindParam(':' . $field, $insert_obj->$field, \PDO::PARAM_STR);
+        }
+        return $stmt->execute();
+    }
+
+    /*
      * Delete a User
      */
     public function delUser($idOrEmail) {
@@ -77,6 +77,24 @@ class User {
         return $stmt->execute();
     }
 
+    /*
+     * Update a User
+     */
+    public function updUser($id,$content) {
+        $updFields = array();
+        foreach($content as $field => $value) {
+            $updFields[] = $field . " = '" . $value . "'";
+        }
+
+        $query = "UPDATE " . $this->table . " SET " . implode($updFields, ', ') ." WHERE id = :id;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id, \PDO::PARAM_STR);
+        return $stmt->execute();
+    }
+
+    /*
+     * Get de list of users table fields 
+     */
     public function getTableFields($tableName) {
         $q = $this->db->prepare("DESCRIBE " . $tableName);
         $q->execute();
