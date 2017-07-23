@@ -14,11 +14,14 @@ services:
   php:
    build:
       context: .
+   container_name: fpm
    mem_limit: 96m
    volumes:
    - ./:/usr/share/nginx/html/restfullapi/
-   expose:
-   - "9000"
+   ports:
+   - "9000:9000"
+  #  expose:
+  #  - "9000"
    links:
     - db:db
 
