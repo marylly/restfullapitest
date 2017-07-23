@@ -54,6 +54,29 @@ class User {
         return $stmt->execute();
     }
 
+    /*
+     * Select a User
+     */
+    public function getUser($idOrEmail) {
+        $fields = $this->getTableFields($this->table);
+        $query = "SELECT " . implode($fields, ', ') . " FROM " . $this->table . " WHERE id = :id OR email = :email;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $idOrEmail, \PDO::PARAM_STR);
+        $stmt->bindParam(':email', $idOrEmail, \PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    /*
+     * Delete a User
+     */
+    public function delUser($idOrEmail) {
+        $query = "DELETE FROM " . $this->table . " WHERE id = :id;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $idOrEmail, \PDO::PARAM_STR);
+        return $stmt->execute();
+    }
+
     public function getTableFields($tableName) {
         $q = $this->db->prepare("DESCRIBE " . $tableName);
         $q->execute();
