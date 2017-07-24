@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: 22-Jul-2017 às 17:42
+-- Generation Time: 24-Jul-2017 às 17:12
 -- Versão do servidor: 10.1.21-MariaDB-1~jessie
 -- PHP Version: 7.0.16
 
@@ -38,6 +38,14 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `nome`, `email`, `dt_cadastro`) VALUES
+(1, 'Dorothy Johnson Vaughan', 'dorothy@outlook.com', '1910-09-20 11:42:37'),
+(2, 'Katherine Coleman Goble Johnso', 'dorothy@outlook.com', '1918-08-26 04:40:01');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -55,7 +63,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -5,7 +5,7 @@ services:
    image: nginx:latest
    mem_limit: 96m
    ports:
-   - "8064:80"
+   - "8064:8889"
    volumes:
    - ./:/usr/share/nginx/html/restfullapi/
    - ./config/default.conf:/etc/nginx/conf.d/site.conf

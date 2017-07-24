@@ -1,5 +1,5 @@
 # User RESTFull API Test
-Esse é um projeto de teste de um RESTFull API construída utilizando o microframework Slim Framework 3 para construção estruturada de aplicações Web e API (Application Programming Interface).
+Esse é um projeto de teste de um RESTFull API, construída utilizando o microframework Slim Framework 3, utilizado para construção estruturada de aplicações Web e API (Application Programming Interface).
 
 ## Instalação da Aplicação
 
@@ -27,7 +27,6 @@ O Docker é uma ferramenta de criação, manuntenção e execução de múltiplo
 Após a instalação das ferramentas necessárias, abra um terminal (Prompt Command Line para Windows).
 Acesse a pasta criada com o download do projeto, e execute o composer para instalação das dependências do PHP:
 
-Ubuntu/Debian:
 ```
 $ composer install
 ```
@@ -70,6 +69,15 @@ GET	http://localhost:8064/user/1	Para consulta a user existente no banco de dado
 POST	http://localhost:8064/user	Para inclusão de novo user
 PUT	http://localhost:8064/user/1	Para atualização de um user existente
 DELETE	http://localhost:8064/user/1	Para exclusão de um user existente
+```
+**JSON**
+Um exemplo de json para executar um request:
+```
+{
+    "nome": "Dorothy Johnson Vaughan",
+    "email": "dorothy@outlook.com",
+    "dt_cadastro": "1910-09-20 11:42:37"
+}
 ```
 
 ## Banco de Dados
