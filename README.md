@@ -1,26 +1,47 @@
-# Slim Framework 3 Skeleton Application
+# User RESTFull API Test
+Esse é um projeto de teste de um RESTFull API.
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+## Instalação da Aplicação
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+### Requisitos
+Serão necessárias necessárias as seguintes ferramentas:
 
-## Install the Application
+**Git**
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+Git é uma ferramenta
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+**PHP Cli (Command-line)**
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+O PHP Cli (Command-line) é o PHP para execução de scripts em linha de comando com a linguagem PHP, será utilizado pelo Composer e para processamento dos testes unitários.
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
+**Composer**
 
-To run the application in development, you can also run this command. 
+O Composer é um orquestrador de dependências da aplicação em PHP, onde a dependência é verificada, e caso não exista, a mesma é baixada e instalada para funcionamento da aplicação.
 
-	php composer.phar start
+**Docker e o Docker-Compose**
 
-Run this command to run the test suite
+O Docker é 
 
-	php composer.phar test
+## Instalação das Dependências
 
-That's it! Now go build something cool.
+Após a instalação das ferramentas necessárias, abra um terminal (Prompt Command Line para Windows).
+Acesse a pasta criada com o download do projeto, e execute o composer para instalação das dependências do PHP:
+
+Ubuntu/Debian:
+```
+$ composer install
+```
+
+Após conclusão do download das dependências do PHP, é necessário efetuar o download das imagens que serão utilizadas nos containers que serão gerados pelo Docker:
+
+Ubuntu/Debian:
+```
+$ docker-compose build
+```
+Terminados os downloads das imagens do docker, crie os container e coloque eles no ar:
+
+Ubuntu/Debian:
+```
+$ docker-compose up
+```
+
