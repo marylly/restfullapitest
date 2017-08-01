@@ -24,7 +24,7 @@ O Docker é uma ferramenta de criação, manuntenção e execução de múltiplo
 
 ## Instalação das Dependências
 
-Após a instalação das ferramentas necessárias, abra um terminal (Prompt Command Line para Windows).
+Após a instalação das ferramentas necessárias, abra um terminal.
 Acesse a pasta criada com o download do projeto, e execute o composer para instalação das dependências do PHP:
 
 ```
@@ -42,7 +42,6 @@ $ docker-compose build
 ```
 Terminados os downloads das imagens do dockers, crie os container e coloque eles no ar:
 
-Ubuntu/Debian:
 ```
 $ docker-compose up
 ```
