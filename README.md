@@ -1,3 +1,6 @@
+[![License](https://poser.pugx.org/components/angular-route/license)](https://packagist.org/packages/components/angular-route)
+[![Build Status](https://travis-ci.org/marylly/restfullapitest.png)](https://travis-ci.org/marylly/restfullapitest)
+
 # User RESTFull API Test
 Esse é um projeto de teste de um RESTFull API, construída utilizando o microframework Slim Framework 3, utilizado para construção estruturada de aplicações Web e API (Application Programming Interface).
 
