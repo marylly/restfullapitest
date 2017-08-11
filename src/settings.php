@@ -17,6 +17,7 @@ return [
         ],
         'db' => [
             'host' => 'db',
+            'port' => '3307',
             'dbname' => 'api',
             'user' => 'testrestfullapi',
             'pass' => 'testrestfullapi'
