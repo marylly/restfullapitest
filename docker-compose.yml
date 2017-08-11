@@ -36,7 +36,7 @@ services:
     MYSQL_USER: testrestfullapi
     MYSQL_PASSWORD: testrestfullapi
    ports:
-   - "3306:3306"
+   - "3307:3306"
 
   pma:
    image: phpmyadmin/phpmyadmin
